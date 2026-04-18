@@ -1,34 +1,44 @@
 import AboutSection from '@/components/AboutSection';
-import LatestNewsSection from '@/components/LatestNewsSection';
-import ProjectSection from '@/components/ProjectSection';
 import SelectedPublicationsSection from '@/components/SelectedPublicationsSection';
 import bibtex from '@/data/publications/Publications.bib';
 import { homepageSection } from '@/data/website.config';
+
+interface DetailItem {
+  text: string;
+  date?: string;
+  advisorLink?: boolean;
+}
 
 const educationList = [
   {
     institution: 'Korea Advanced Institute of Science and Technology (KAIST)',
     location: 'South Korea',
     details: [
-      'M.S.-Ph.D. Integrated in Industrial and Systems Engineering (03/2024 - present)',
-      'Advisor: Prof. Dabeen Lee',
-      'GPA: 4.2 / 4.3',
-    ],
+      {
+        text: 'M.S.-Ph.D. Integrated in Industrial and Systems Engineering',
+        date: '03/2024 - present',
+      },
+      { text: 'Advisor: Prof. Dabeen Lee', advisorLink: true },
+      { text: 'GPA: 4.2 / 4.3' },
+    ] as DetailItem[],
   },
   {
     institution: 'Gwangju Institute of Science and Technology (GIST)',
     location: 'South Korea',
     details: [
-      'B.S. in Electrical Engineering and Computer Science (03/2018 - 02/2024)',
-      'Minor in Mathematics',
-      'GPA: 4.08 / 4.5 (cum laude)',
-      '2 years absence for military service (2020-2021)',
-    ],
+      {
+        text: 'B.S. in Electrical Engineering and Computer Science',
+        date: '03/2018 - 02/2024',
+      },
+      { text: 'Minor in Mathematics' },
+      { text: 'GPA: 4.08 / 4.5 (cum laude)' },
+      { text: 'Two-year leave for military service', date: '2020-2021' },
+    ] as DetailItem[],
   },
   {
     institution: 'Sejong Science High School',
     location: 'South Korea',
-    details: ['03/2015 - 02/2018'],
+    details: [{ text: '', date: '03/2015 - 02/2018' }] as DetailItem[],
   },
 ];
 
@@ -37,9 +47,18 @@ const academicServicesList = [
 ];
 
 const teachingExperienceList = [
-  'Teaching Assistant, Operations Research: Optimization (KAIST) (03/2024 - 06/2024)',
-  'Teaching Assistant, Differential Equations (GIST) (09/2023 - 12/2023)',
-  'Teaching Assistant, Single Variable Calculus (GIST) (03/2023 - 06/2023)',
+  {
+    text: 'Teaching Assistant, Operations Research: Optimization (KAIST)',
+    date: '03/2024 - 06/2024',
+  },
+  {
+    text: 'Teaching Assistant, Differential Equations (GIST)',
+    date: '09/2023 - 12/2023',
+  },
+  {
+    text: 'Teaching Assistant, Single Variable Calculus (GIST)',
+    date: '03/2023 - 06/2023',
+  },
 ];
 
 const honorsList = [
@@ -52,28 +71,39 @@ const experienceList = [
     lab: 'Information Processing, Controlling, and Network Lab (GIST)',
     location: 'South Korea',
     details: [
-      'Undergraduate Research Intern (Advisor: Prof. Heung-No Lee) (01/2023 - 12/2023)',
-      'Worked on lattice-based cryptography',
-    ],
+      {
+        text: 'Undergraduate Research Intern (Advisor: Prof. Heung-No Lee)',
+        date: '01/2023 - 12/2023',
+      },
+      { text: 'Worked on lattice-based cryptography' },
+    ] as DetailItem[],
   },
   {
     lab: 'Artificial Intelligence Lab (GIST)',
     location: 'South Korea',
     details: [
-      'Undergraduate Research Intern (Advisor: Prof. Kyoobin Lee) (07/2022 - 12/2022)',
-      'Worked on robust image classification under noisy labels',
-    ],
+      {
+        text: 'Undergraduate Research Intern (Advisor: Prof. Kyoobin Lee)',
+        date: '07/2022 - 12/2022',
+      },
+      { text: 'Worked on robust image classification under noisy labels' },
+    ] as DetailItem[],
   },
   {
     lab: 'University of Cambridge',
     location: 'United Kingdom',
-    details: ['Summer Session Programme (Machine Learning) (07/2019 - 08/2019)'],
+    details: [
+      {
+        text: 'Summer Session Programme (Machine Learning)',
+        date: '07/2019 - 08/2019',
+      },
+    ] as DetailItem[],
   },
 ];
 
 export default function Page() {
   return (
-    <main className='md:w-[40rem] m-auto px-8 mt-32 flex flex-col gap-10 mb-20'>
+    <main className='md:w-[48rem] m-auto px-8 mt-32 flex flex-col gap-10 mb-20'>
       {homepageSection.AboutSection && <AboutSection />}
       {homepageSection.EducationSection && (
         <section className='flex flex-col gap-3'>
@@ -87,22 +117,31 @@ export default function Page() {
                 </div>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
-                    <li key={detail}>
-                      {detail === 'Advisor: Prof. Dabeen Lee' ? (
-                        <>
-                          Advisor:{' '}
-                          <a
-                            href='https://dabeenl.github.io/'
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='underline'
-                          >
-                            Prof. Dabeen Lee
-                          </a>
-                        </>
-                      ) : (
-                        detail
-                      )}
+                    <li key={`${detail.text}-${detail.date || ''}`}>
+                      <div className='flex items-start justify-between gap-2'>
+                        <span>
+                          {detail.advisorLink ? (
+                            <>
+                              Advisor:{' '}
+                              <a
+                                href='https://dabeenl.github.io/'
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='underline'
+                              >
+                                Prof. Dabeen Lee
+                              </a>
+                            </>
+                          ) : (
+                            detail.text
+                          )}
+                        </span>
+                        {detail.date && (
+                          <span className='text-neutral-500 whitespace-nowrap'>
+                            {detail.date}
+                          </span>
+                        )}
+                      </div>
                     </li>
                   ))}
                 </ul>
@@ -129,7 +168,12 @@ export default function Page() {
           <h1 className='text-2xl font-semibold'>Teaching Experience</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {teachingExperienceList.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item.text}>
+                <div className='flex items-start justify-between gap-2'>
+                  <span>{item.text}</span>
+                  <span className='text-neutral-500 whitespace-nowrap'>{item.date}</span>
+                </div>
+              </li>
             ))}
           </ul>
         </section>
@@ -156,20 +200,22 @@ export default function Page() {
                 </div>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+                    <li key={`${detail.text}-${detail.date || ''}`}>
+                      <div className='flex items-start justify-between gap-2'>
+                        <span>{detail.text}</span>
+                        {detail.date && (
+                          <span className='text-neutral-500 whitespace-nowrap'>
+                            {detail.date}
+                          </span>
+                        )}
+                      </div>
+                    </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
         </section>
-      )}
-      {homepageSection.NewsSection && <LatestNewsSection />}
-      {homepageSection.ProjectSection && (
-        <div className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Projects</h1>
-          <ProjectSection />
-        </div>
       )}
     </main>
   );

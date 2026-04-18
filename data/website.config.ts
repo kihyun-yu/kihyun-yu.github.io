@@ -29,9 +29,7 @@ export interface HomepageSection {
   TeachingExperienceSection?: boolean;
   HonorsSection?: boolean;
   ExperienceSection?: boolean;
-  NewsSection?: boolean;
   SelectedPublicationsSection?: boolean;
-  ProjectSection?: boolean;
 }
 
 export type FontStyle = "sans" | "serif" | "mono";
@@ -56,9 +54,7 @@ export const websiteInfo: WebsiteInfo = {
 };
 
 export const navigations: NavigationItem[] = [
-  { name: "Projects", route: "/projects" },
   { name: "Publications", route: "/publications" },
-  { name: "News", route: "/news" },
   { name: "CV", route: "/cv/cv.pdf" },
 ];
 
@@ -69,9 +65,7 @@ export const homepageSection: HomepageSection = {
   TeachingExperienceSection: true,
   HonorsSection: true,
   ExperienceSection: true,
-  NewsSection: false,
   SelectedPublicationsSection: true,
-  ProjectSection: false,
 };
 
 export const fontStyle: FontStyle = "sans"; // "sans" | "serif" | "mono"

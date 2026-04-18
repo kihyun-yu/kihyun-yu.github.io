@@ -24,6 +24,7 @@ export interface NavigationItem {
 
 export interface HomepageSection {
   AboutSection?: boolean;
+  EducationSection?: boolean;
   NewsSection?: boolean;
   SelectedPublicationsSection?: boolean;
   ProjectSection?: boolean;
@@ -33,7 +34,6 @@ export type FontStyle = "sans" | "serif" | "mono";
 
 export const personalInfo: PersonalInfo = {
   name: "Kihyun Yu",
-  profilePicture: "/profile.jpg", //optional
   role: "M.S.-Ph.D. Student",
   university: "KAIST",
   universityWebsite: "https://www.kaist.ac.kr/en/",
@@ -60,7 +60,8 @@ export const navigations: NavigationItem[] = [
 
 export const homepageSection: HomepageSection = {
   AboutSection: true,
-  NewsSection: true,
+  EducationSection: true,
+  NewsSection: false,
   SelectedPublicationsSection: true,
   ProjectSection: false,
 };

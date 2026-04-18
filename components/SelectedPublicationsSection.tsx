@@ -10,7 +10,7 @@ export default function SelectedPublicationsSection({ bibtex }: SelectedPublicat
   return (
     <section className="flex flex-col gap-3">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-semibold">Selected Publications</h1>
+        <h1 className="text-2xl font-semibold">Publications</h1>
         <Link href="/publications" className="text-neutral-500 hover:underline">
           View all
         </Link>

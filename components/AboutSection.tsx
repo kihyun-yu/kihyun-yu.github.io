@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import AboutMd from '@/data/home/About.mdx';
 import { personalInfo } from '@/data/website.config';
 import {
@@ -12,15 +11,6 @@ export default function AboutSection() {
   return (
     <section className='flex flex-col gap-8'>
       <div className='flex flex-col gap-8 md:flex-row md:justify-between'>
-        {personalInfo.profilePicture && (
-          <Image
-            src={personalInfo.profilePicture}
-            alt='profile image'
-            width={120}
-            height={120}
-            className='md:hidden sm:block object-cover aspect-square'
-          />
-        )}
         <div className='flex flex-col gap-3'>
           <h1 className='text-4xl font-semibold'>{personalInfo.name}</h1>
           <h2 className='text-xl font-medium'>
@@ -58,15 +48,6 @@ export default function AboutSection() {
             })}
           </div>
         </div>
-        {personalInfo.profilePicture && (
-          <Image
-            src={personalInfo.profilePicture}
-            alt='profile image'
-            width={120}
-            height={120}
-            className='hidden md:block object-cover aspect-square'
-          />
-        )}
       </div>
       <article className='flex flex-col gap-2 text-pretty'>
         <AboutMd />

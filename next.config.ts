@@ -1,9 +1,16 @@
 import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
+const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] || "";
+const hasProjectBasePath = isGitHubActions && repoName.length > 0;
+const basePath = hasProjectBasePath ? `/${repoName}` : "";
+
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
+  basePath,
+  assetPrefix: hasProjectBasePath ? `${basePath}/` : undefined,
   images: {
     unoptimized: true,
   },

@@ -32,7 +32,7 @@ const educationList = [
       },
       { text: 'Minor in Mathematics' },
       { text: 'GPA: 4.08 / 4.5 (cum laude)' },
-      { text: 'Two-year leave for mandatory military service (2020-2021)'},
+      { text: 'Two-year leave for mandatory military service (2020-2021)' },
     ] as DetailItem[],
   },
 ];
@@ -57,8 +57,12 @@ const teachingExperienceList = [
 ];
 
 const honorsList = [
-  'Scholarship for Academic Excellence',
-  'Awarded for 6 semesters: Spring 2018, Fall 2018, Spring 2019, Fall 2019, Spring 2022, Spring 2023',
+  {
+    title: 'Scholarship for Academic Excellence',
+    details: [
+      'Awarded for 6 semesters: Spring 2018, Fall 2018, Spring 2019, Fall 2019, Spring 2022, Spring 2023',
+    ],
+  },
 ];
 
 const experienceList = [
@@ -191,7 +195,14 @@ export default function Page() {
           <h1 className='text-2xl font-semibold'>Honors</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {honorsList.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item.title}>
+                {item.title}
+                <ul className='list-disc pl-5 mt-1'>
+                  {item.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </li>
             ))}
           </ul>
         </section>

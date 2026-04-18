@@ -29,7 +29,7 @@ export default function AboutSection() {
               </a>
             </p>
             <p>
-              CV:{' '}
+              (
               <a
                 href='/cv/cv.pdf'
                 target='_blank'
@@ -38,17 +38,16 @@ export default function AboutSection() {
               >
                 cv
               </a>
-            </p>
-            <p>
-              Google Scholar:{' '}
+              ) (
               <a
                 href='https://scholar.google.com/citations?user=ya1HqdsAAAAJ&hl=en'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='underline underline-offset-2'
               >
-                Google Scholar
+                google scholar
               </a>
+              )
             </p>
           </div>
         </div>

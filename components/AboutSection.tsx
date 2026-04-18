@@ -17,36 +17,8 @@ export default function AboutSection() {
             </a>
           </h2>
           <div className='text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed'>
-            <p>
-              Email:{' '}
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className='underline underline-offset-2'
-              >
-                {personalInfo.email}
-              </a>
-            </p>
-            <p>
-              (
-              <a
-                href='/cv/cv.pdf'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='underline underline-offset-2'
-              >
-                cv
-              </a>
-              ) (
-              <a
-                href='https://scholar.google.com/citations?user=ya1HqdsAAAAJ&hl=en'
-                target='_blank'
-                rel='noopener noreferrer'
-                className='underline underline-offset-2'
-              >
-                google scholar
-              </a>
-              )
-            </p>
+            <p>Email: {personalInfo.email}</p>
+            <p>cv google scholar</p>
           </div>
         </div>
       </div>

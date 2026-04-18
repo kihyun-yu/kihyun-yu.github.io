@@ -7,15 +7,6 @@ export default function AboutSection() {
       <div className='flex flex-col gap-8 md:flex-row md:justify-between'>
         <div className='flex flex-col gap-3'>
           <h1 className='text-4xl font-semibold'>{personalInfo.name}</h1>
-          <h2 className='text-xl font-medium'>
-            {personalInfo.role}{' '}
-            <a
-              href={personalInfo.universityWebsite}
-              className='hover:underline'
-            >
-              @{personalInfo.university}
-            </a>
-          </h2>
           <div className='text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed'>
             <p>Email: {personalInfo.email}</p>
             <p>

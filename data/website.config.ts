@@ -25,9 +25,12 @@ export interface NavigationItem {
 export interface HomepageSection {
   AboutSection?: boolean;
   EducationSection?: boolean;
+  AcademicServicesSection?: boolean;
   TeachingExperienceSection?: boolean;
   HonorsSection?: boolean;
   ExperienceSection?: boolean;
+  LanguagesAndTechnicalSkillsSection?: boolean;
+  OtherActivitiesSection?: boolean;
   NewsSection?: boolean;
   SelectedPublicationsSection?: boolean;
   ProjectSection?: boolean;
@@ -64,9 +67,12 @@ export const navigations: NavigationItem[] = [
 export const homepageSection: HomepageSection = {
   AboutSection: true,
   EducationSection: true,
+  AcademicServicesSection: true,
   TeachingExperienceSection: true,
   HonorsSection: true,
   ExperienceSection: true,
+  LanguagesAndTechnicalSkillsSection: true,
+  OtherActivitiesSection: true,
   NewsSection: false,
   SelectedPublicationsSection: true,
   ProjectSection: false,

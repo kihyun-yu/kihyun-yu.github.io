@@ -26,17 +26,14 @@ const educationList = [
     ],
   },
   {
-    institution: 'University of Cambridge',
-    location: 'United Kingdom',
-    details: [
-      'Summer Session Programme (Machine Learning) (07/2019 - 08/2019)',
-    ],
-  },
-  {
     institution: 'Sejong Science High School',
     location: 'South Korea',
     details: ['03/2015 - 02/2018'],
   },
+];
+
+const academicServicesList = [
+  'Conference Reviewer: ICML 2026, NeurIPS 2026, IEEE CDC 2026',
 ];
 
 const teachingExperienceList = [
@@ -53,6 +50,7 @@ const honorsList = [
 const experienceList = [
   {
     lab: 'Information Processing, Controlling, and Network Lab (GIST)',
+    location: 'South Korea',
     details: [
       'Undergraduate Research Intern (Advisor: Prof. Heung-No Lee) (01/2023 - 12/2023)',
       'Worked on lattice-based cryptography',
@@ -60,10 +58,28 @@ const experienceList = [
   },
   {
     lab: 'Artificial Intelligence Lab (GIST)',
+    location: 'South Korea',
     details: [
       'Undergraduate Research Intern (Advisor: Prof. Kyoobin Lee) (07/2022 - 12/2022)',
       'Worked on robust image classification under noisy labels',
     ],
+  },
+  {
+    lab: 'University of Cambridge',
+    location: 'United Kingdom',
+    details: ['Summer Session Programme (Machine Learning) (07/2019 - 08/2019)'],
+  },
+];
+
+const languagesAndTechnicalSkillsList = [
+  'Korean (native), English (conversational)',
+  'C/C++, Python, Pytorch, LaTeX',
+];
+
+const otherActivitiesList = [
+  {
+    activity: 'Volunteer Math Mentor (03/2018 - 12/2018)',
+    details: ['Provided small-group math mentoring for middle and high school students'],
   },
 ];
 
@@ -83,12 +99,41 @@ export default function Page() {
                 </div>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
+                    <li key={detail}>
+                      {detail === 'Advisor: Prof. Dabeen Lee' ? (
+                        <>
+                          Advisor:{' '}
+                          <a
+                            href='https://dabeenl.github.io/'
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='underline'
+                          >
+                            Prof. Dabeen Lee
+                          </a>
+                        </>
+                      ) : (
+                        detail
+                      )}
+                    </li>
                   ))}
                 </ul>
               </div>
             ))}
           </div>
+        </section>
+      )}
+      {homepageSection.SelectedPublicationsSection && (
+        <SelectedPublicationsSection bibtex={bibtex} />
+      )}
+      {homepageSection.AcademicServicesSection && (
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-semibold'>Academic Services</h1>
+          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+            {academicServicesList.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </section>
       )}
       {homepageSection.TeachingExperienceSection && (
@@ -117,7 +162,37 @@ export default function Page() {
           <div className='flex flex-col gap-4'>
             {experienceList.map((item) => (
               <div key={item.lab} className='flex flex-col gap-1'>
-                <h2 className='text-base font-medium'>{item.lab}</h2>
+                <div className='flex items-start justify-between gap-2'>
+                  <h2 className='text-base font-medium'>{item.lab}</h2>
+                  <span className='text-sm text-neutral-500'>{item.location}</span>
+                </div>
+                <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+                  {item.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+      {homepageSection.LanguagesAndTechnicalSkillsSection && (
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-semibold'>Languages and Technical Skills</h1>
+          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+            {languagesAndTechnicalSkillsList.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+      {homepageSection.OtherActivitiesSection && (
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-semibold'>Other Activities</h1>
+          <div className='flex flex-col gap-4'>
+            {otherActivitiesList.map((item) => (
+              <div key={item.activity} className='flex flex-col gap-1'>
+                <h2 className='text-base font-medium'>{item.activity}</h2>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
                     <li key={detail}>{detail}</li>
@@ -129,9 +204,6 @@ export default function Page() {
         </section>
       )}
       {homepageSection.NewsSection && <LatestNewsSection />}
-      {homepageSection.SelectedPublicationsSection && (
-        <SelectedPublicationsSection bibtex={bibtex} />
-      )}
       {homepageSection.ProjectSection && (
         <div className='flex flex-col gap-3'>
           <h1 className='text-2xl font-semibold'>Projects</h1>

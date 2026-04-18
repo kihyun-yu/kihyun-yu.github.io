@@ -57,7 +57,12 @@ export default function Publications({ bibtex }: PublicationsProps) {
           <li key={item.entryTags.title} className=' list-decimal'>
             <h2 className='text-base font-medium dark:text-neutral-50'>
               {item.entryTags.url ? (
-                <a href={item.entryTags.url} className='underline'>
+                <a
+                  href={item.entryTags.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='underline'
+                >
                   {item.entryTags.title?.replace(/{|}/g, '')}
                 </a>
               ) : (

@@ -115,7 +115,7 @@ const otherActivitiesList = [
 
 export default function Page() {
   return (
-    <main className='md:w-[48rem] m-auto px-8 mt-32 mb-20 flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700 [&>*]:py-8 [&>*:first-child]:pt-0'>
+    <main className='md:w-[52rem] m-auto px-8 mt-32 mb-20 flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700 [&>*]:py-8 [&>*:first-child]:pt-0'>
       {homepageSection.AboutSection && <AboutSection />}
       {homepageSection.EducationSection && (
         <section className='flex flex-col gap-3'>

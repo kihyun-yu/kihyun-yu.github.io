@@ -100,19 +100,6 @@ const experienceList = [
   },
 ];
 
-const languagesAndTechnicalSkillsList = [
-  'Korean (native), English (conversational)',
-  'C/C++, Python, PyTorch, LaTeX',
-];
-
-const otherActivitiesList = [
-  {
-    text: 'Volunteer Math Mentor',
-    date: '03/2018 - 12/2018',
-    details: ['Provided small-group math mentoring for middle and high school students'],
-  },
-];
-
 export default function Page() {
   return (
     <main className='md:w-[52rem] m-auto px-8 mt-32 mb-20 flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700 [&>*]:py-8 [&>*:first-child]:pt-0'>
@@ -234,36 +221,6 @@ export default function Page() {
               </div>
             ))}
           </div>
-        </section>
-      )}
-      {homepageSection.LanguagesAndTechnicalSkillsSection && (
-        <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Languages and Technical Skills</h1>
-          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
-            {languagesAndTechnicalSkillsList.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </section>
-      )}
-      {homepageSection.OtherActivitiesSection && (
-        <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Other Activities</h1>
-          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
-            {otherActivitiesList.map((item) => (
-              <li key={item.text}>
-                <div className='flex items-start justify-between gap-2'>
-                  <span>{item.text}</span>
-                  <span className='text-neutral-500 whitespace-nowrap'>{item.date}</span>
-                </div>
-                <ul className='list-disc pl-5'>
-                  {item.details.map((detail) => (
-                    <li key={detail}>{detail}</li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
         </section>
       )}
     </main>

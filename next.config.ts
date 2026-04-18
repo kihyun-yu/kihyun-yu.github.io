@@ -2,8 +2,12 @@ import createMDX from "@next/mdx";
 import type { NextConfig } from "next";
 
 const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
+const repoOwner = process.env.GITHUB_REPOSITORY_OWNER || "";
 const repoName = process.env.GITHUB_REPOSITORY?.split("/")[1] || "";
-const hasProjectBasePath = isGitHubActions && repoName.length > 0;
+const isUserOrOrgPagesRepo =
+  repoOwner.length > 0 && repoName.toLowerCase() === `${repoOwner.toLowerCase()}.github.io`;
+const hasProjectBasePath =
+  isGitHubActions && repoName.length > 0 && !isUserOrOrgPagesRepo;
 const basePath = hasProjectBasePath ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {

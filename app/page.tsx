@@ -15,7 +15,7 @@ const educationList = [
     location: 'South Korea',
     details: [
       {
-        text: 'M.S.-Ph.D. Integrated in Industrial and Systems Engineering',
+        text: 'Integrated M.S.-Ph.D. Program in Industrial and Systems Engineering',
         date: '03/2024 - present',
       },
       { text: 'Advisor: Prof. Dabeen Lee', advisorLink: true },
@@ -32,13 +32,8 @@ const educationList = [
       },
       { text: 'Minor in Mathematics' },
       { text: 'GPA: 4.08 / 4.5 (cum laude)' },
-      { text: 'Two-year leave for military service', date: '2020-2021' },
+      { text: 'Two-year leave for mandatory military service (2020-2021)'},
     ] as DetailItem[],
-  },
-  {
-    institution: 'Sejong Science High School',
-    location: 'South Korea',
-    details: [{ text: '', date: '03/2015 - 02/2018' }] as DetailItem[],
   },
 ];
 
@@ -63,7 +58,7 @@ const teachingExperienceList = [
 
 const honorsList = [
   'Scholarship for Academic Excellence',
-  'Awarded for 6 semesters (Spring 2018, Fall 2018, Spring 2019, Fall 2019, Spring 2022, Spring 2023)',
+  'Awarded for 6 semesters: Spring 2018, Fall 2018, Spring 2019, Fall 2019, Spring 2022, Spring 2023',
 ];
 
 const experienceList = [
@@ -75,7 +70,7 @@ const experienceList = [
         text: 'Undergraduate Research Intern (Advisor: Prof. Heung-No Lee)',
         date: '01/2023 - 12/2023',
       },
-      { text: 'Worked on lattice-based cryptography' },
+      { text: 'Conducted research on lattice-based cryptography' },
     ] as DetailItem[],
   },
   {
@@ -86,7 +81,7 @@ const experienceList = [
         text: 'Undergraduate Research Intern (Advisor: Prof. Kyoobin Lee)',
         date: '07/2022 - 12/2022',
       },
-      { text: 'Worked on robust image classification under noisy labels' },
+      { text: 'Conducted research on robust image classification under noisy labels' },
     ] as DetailItem[],
   },
   {
@@ -98,6 +93,19 @@ const experienceList = [
         date: '07/2019 - 08/2019',
       },
     ] as DetailItem[],
+  },
+];
+
+const languagesAndTechnicalSkillsList = [
+  'Korean (native), English (conversational)',
+  'C/C++, Python, PyTorch, LaTeX',
+];
+
+const otherActivitiesList = [
+  {
+    text: 'Volunteer Math Mentor',
+    date: '03/2018 - 12/2018',
+    details: ['Provided small-group math mentoring for middle and high school students'],
   },
 ];
 
@@ -215,6 +223,36 @@ export default function Page() {
               </div>
             ))}
           </div>
+        </section>
+      )}
+      {homepageSection.LanguagesAndTechnicalSkillsSection && (
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-semibold'>Languages and Technical Skills</h1>
+          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+            {languagesAndTechnicalSkillsList.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+      {homepageSection.OtherActivitiesSection && (
+        <section className='flex flex-col gap-3'>
+          <h1 className='text-2xl font-semibold'>Other Activities</h1>
+          <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+            {otherActivitiesList.map((item) => (
+              <li key={item.text}>
+                <div className='flex items-start justify-between gap-2'>
+                  <span>{item.text}</span>
+                  <span className='text-neutral-500 whitespace-nowrap'>{item.date}</span>
+                </div>
+                <ul className='list-disc pl-5'>
+                  {item.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
     </main>

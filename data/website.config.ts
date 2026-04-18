@@ -9,6 +9,8 @@ export interface PersonalInfo {
   role: string;
   university: string;
   universityWebsite: string;
+  address: string[];
+  email: string;
   socialMedia: SocialMediaLink[];
 }
 
@@ -29,6 +31,8 @@ export interface HomepageSection {
   TeachingExperienceSection?: boolean;
   HonorsSection?: boolean;
   ExperienceSection?: boolean;
+  LanguagesAndTechnicalSkillsSection?: boolean;
+  OtherActivitiesSection?: boolean;
   SelectedPublicationsSection?: boolean;
 }
 
@@ -39,6 +43,11 @@ export const personalInfo: PersonalInfo = {
   role: "M.S.-Ph.D. Student",
   university: "KAIST",
   universityWebsite: "https://www.kaist.ac.kr/en/",
+  address: [
+    "Industrial and Systems Engineering, KAIST",
+    "291 Daehak-ro, Yuseong-gu, Daejeon, Republic of Korea",
+  ],
+  email: "khyu99@kaist.ac.kr",
   socialMedia: [
     { name: "Email", url: "mailto:khyu99@kaist.ac.kr" },
     {
@@ -65,6 +74,8 @@ export const homepageSection: HomepageSection = {
   TeachingExperienceSection: true,
   HonorsSection: true,
   ExperienceSection: true,
+  LanguagesAndTechnicalSkillsSection: true,
+  OtherActivitiesSection: true,
   SelectedPublicationsSection: true,
 };
 

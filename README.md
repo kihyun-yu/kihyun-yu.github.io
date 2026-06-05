@@ -4,11 +4,12 @@ Personal academic homepage built with Next.js and Tailwind CSS.
 
 ## Content
 
-- Home page content: `app/page.tsx` and `data/home/About.mdx`
-- Site metadata and navigation: `data/website.config.ts`
+- Personal/site metadata and navigation: `data/website.config.ts`
+- About text: `data/home/About.mdx`
+- Home page lists: `data/home/*.ts`
 - Publications: `data/publications/Publications.bib`
+- Profile image: `data/assets/profile.jpg`
 - CV: `cv.pdf`
-- Profile image: `profile.jpg`
 
 ## Development
 

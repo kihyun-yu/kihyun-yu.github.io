@@ -1,104 +1,44 @@
 import AboutSection from '@/components/AboutSection';
 import SelectedPublicationsSection from '@/components/SelectedPublicationsSection';
+import { academicServicesList } from '@/data/home/academic-services';
+import { educationList } from '@/data/home/education';
+import { experienceList } from '@/data/home/experience';
+import { honorsList } from '@/data/home/honors';
+import { teachingExperienceList } from '@/data/home/teaching';
+import type { DetailItem } from '@/data/home/types';
 import bibtex from '@/data/publications/Publications.bib';
 import { homepageSection } from '@/data/website.config';
 
-interface DetailItem {
-  text: string;
-  date?: string;
-  advisorLink?: boolean;
+function DetailRow({ detail }: { detail: DetailItem }) {
+  const labelPrefix = detail.link
+    ? detail.text.replace(detail.link.label, '')
+    : detail.text;
+
+  return (
+    <div className='flex items-start justify-between gap-2'>
+      <span>
+        {detail.link ? (
+          <>
+            {labelPrefix}
+            <a
+              href={detail.link.url}
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline'
+            >
+              {detail.link.label}
+            </a>
+          </>
+        ) : (
+          detail.text
+        )}
+      </span>
+      {detail.date && (
+        <span className='text-neutral-500 whitespace-nowrap'>{detail.date}</span>
+      )}
+    </div>
+  );
 }
-
-const educationList = [
-  {
-    institution: 'Korea Advanced Institute of Science and Technology (KAIST)',
-    location: 'South Korea',
-    details: [
-      {
-        text: 'Integrated M.S.-Ph.D. Program in Industrial and Systems Engineering',
-        date: '03/2024 - present',
-      },
-      { text: 'Advisor: Prof. Dabeen Lee', advisorLink: true },
-      { text: 'GPA: 4.2 / 4.3' },
-    ] as DetailItem[],
-  },
-  {
-    institution: 'Gwangju Institute of Science and Technology (GIST)',
-    location: 'South Korea',
-    details: [
-      {
-        text: 'B.S. in Electrical Engineering and Computer Science',
-        date: '03/2018 - 02/2024',
-      },
-      { text: 'Minor in Mathematics' },
-      { text: 'GPA: 4.08 / 4.5 (cum laude)' },
-      { text: 'Two-year leave for mandatory military service (2020-2021)' },
-    ] as DetailItem[],
-  },
-];
-
-const academicServicesList = [
-  'Conference Reviewer: ICML 2026, NeurIPS 2026, IEEE CDC 2026',
-];
-
-const teachingExperienceList = [
-  {
-    text: 'Teaching Assistant, Operations Research: Optimization (KAIST)',
-    date: '03/2024 - 06/2024',
-  },
-  {
-    text: 'Teaching Assistant, Differential Equations (GIST)',
-    date: '09/2023 - 12/2023',
-  },
-  {
-    text: 'Teaching Assistant, Single Variable Calculus (GIST)',
-    date: '03/2023 - 06/2023',
-  },
-];
-
-const honorsList = [
-  {
-    title: 'Scholarship for Academic Excellence (GIST)',
-    details: [
-      'Awarded for 6 semesters: Spring 2018, Fall 2018, Spring 2019, Fall 2019, Spring 2022, Spring 2023',
-    ],
-  },
-];
-
-const experienceList = [
-  {
-    lab: 'Information Processing, Controlling, and Network Lab (GIST)',
-    location: 'South Korea',
-    details: [
-      {
-        text: 'Undergraduate Research Intern (Advisor: Prof. Heung-No Lee)',
-        date: '01/2023 - 12/2023',
-      },
-      { text: 'Conducted research on lattice-based cryptography' },
-    ] as DetailItem[],
-  },
-  {
-    lab: 'Artificial Intelligence Lab (GIST)',
-    location: 'South Korea',
-    details: [
-      {
-        text: 'Undergraduate Research Intern (Advisor: Prof. Kyoobin Lee)',
-        date: '07/2022 - 12/2022',
-      },
-      { text: 'Conducted research on robust image classification under noisy labels' },
-    ] as DetailItem[],
-  },
-  {
-    lab: 'University of Cambridge',
-    location: 'United Kingdom',
-    details: [
-      {
-        text: 'Summer Session Programme (Machine Learning)',
-        date: '07/2019 - 08/2019',
-      },
-    ] as DetailItem[],
-  },
-];
 
 export default function Page() {
   return (
@@ -109,38 +49,15 @@ export default function Page() {
           <h1 className='text-2xl font-semibold'>Education</h1>
           <div className='flex flex-col gap-4'>
             {educationList.map((item) => (
-              <div key={item.institution} className='flex flex-col gap-1'>
+              <div key={item.title} className='flex flex-col gap-1'>
                 <div className='flex items-start justify-between gap-2'>
-                  <h2 className='text-base font-normal'>{item.institution}</h2>
+                  <h2 className='text-base font-normal'>{item.title}</h2>
                   <span className='text-sm text-neutral-500'>{item.location}</span>
                 </div>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
                     <li key={`${detail.text}-${detail.date || ''}`}>
-                      <div className='flex items-start justify-between gap-2'>
-                        <span>
-                          {detail.advisorLink ? (
-                            <>
-                              Advisor:{' '}
-                              <a
-                                href='https://dabeenl.github.io/'
-                                target='_blank'
-                                rel='noopener noreferrer'
-                                className='underline'
-                              >
-                                Prof. Dabeen Lee
-                              </a>
-                            </>
-                          ) : (
-                            detail.text
-                          )}
-                        </span>
-                        {detail.date && (
-                          <span className='text-neutral-500 whitespace-nowrap'>
-                            {detail.date}
-                          </span>
-                        )}
-                      </div>
+                      <DetailRow detail={detail} />
                     </li>
                   ))}
                 </ul>
@@ -168,10 +85,7 @@ export default function Page() {
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {teachingExperienceList.map((item) => (
               <li key={item.text}>
-                <div className='flex items-start justify-between gap-2'>
-                  <span>{item.text}</span>
-                  <span className='text-neutral-500 whitespace-nowrap'>{item.date}</span>
-                </div>
+                <DetailRow detail={item} />
               </li>
             ))}
           </ul>
@@ -199,22 +113,15 @@ export default function Page() {
           <h1 className='text-2xl font-semibold'>Experience</h1>
           <div className='flex flex-col gap-4'>
             {experienceList.map((item) => (
-              <div key={item.lab} className='flex flex-col gap-1'>
+              <div key={item.title} className='flex flex-col gap-1'>
                 <div className='flex items-start justify-between gap-2'>
-                  <h2 className='text-base font-medium'>{item.lab}</h2>
+                  <h2 className='text-base font-medium'>{item.title}</h2>
                   <span className='text-sm text-neutral-500'>{item.location}</span>
                 </div>
                 <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
                   {item.details.map((detail) => (
                     <li key={`${detail.text}-${detail.date || ''}`}>
-                      <div className='flex items-start justify-between gap-2'>
-                        <span>{detail.text}</span>
-                        {detail.date && (
-                          <span className='text-neutral-500 whitespace-nowrap'>
-                            {detail.date}
-                          </span>
-                        )}
-                      </div>
+                      <DetailRow detail={detail} />
                     </li>
                   ))}
                 </ul>

@@ -1,7 +1,7 @@
 import AboutMd from '@/data/home/About.mdx';
 import { personalInfo } from '@/data/website.config';
 import Image from 'next/image';
-import profileImage from '@/profile.jpg';
+import profileImage from '@/data/assets/profile.jpg';
 
 export default function AboutSection() {
   return (

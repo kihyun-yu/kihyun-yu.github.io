@@ -18,7 +18,7 @@ export default function AboutSection() {
                 rel='noopener noreferrer'
                 className='underline underline-offset-2'
               >
-                [cv]
+                [cv.pdf]
               </a>{' '}
               <a
                 href='https://scholar.google.com/citations?user=ya1HqdsAAAAJ&hl=en'

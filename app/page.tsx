@@ -40,6 +40,31 @@ function DetailRow({ detail }: { detail: DetailItem }) {
   );
 }
 
+function InlineMarkdownLink({ text }: { text: string }) {
+  const match = text.match(/^(.*?)\[([^\]]+)\]\((https?:\/\/[^)]+)\)(.*)$/);
+
+  if (!match) {
+    return text;
+  }
+
+  const [, before, label, url, after] = match;
+
+  return (
+    <>
+      {before}
+      <a
+        href={url}
+        target='_blank'
+        rel='noopener noreferrer'
+        className='underline'
+      >
+        {label}
+      </a>
+      {after}
+    </>
+  );
+}
+
 export default function Page() {
   return (
     <main className='md:w-[52rem] m-auto px-8 mt-32 mb-20 flex flex-col divide-y divide-neutral-200 dark:divide-neutral-700 [&>*]:py-8 [&>*:first-child]:pt-0'>
@@ -74,7 +99,9 @@ export default function Page() {
           <h1 className='text-2xl font-semibold'>Academic Services</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {academicServicesList.map((item) => (
-              <li key={item}>{item}</li>
+              <li key={item}>
+                <InlineMarkdownLink text={item} />
+              </li>
             ))}
           </ul>
         </section>

@@ -8,7 +8,7 @@ interface SelectedPublicationsSectionProps {
 export default function SelectedPublicationsSection({ bibtex }: SelectedPublicationsSectionProps) {
   return (
     <section className="flex flex-col gap-3">
-      <h1 className="text-2xl font-semibold">Publications</h1>
+      <h1 className="text-xl font-semibold">Publications</h1>
       <Publications bibtex={bibtex} />
     </section>
   );

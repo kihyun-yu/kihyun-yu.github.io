@@ -71,7 +71,7 @@ export default function Page() {
       {homepageSection.AboutSection && <AboutSection />}
       {homepageSection.EducationSection && (
         <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Education</h1>
+          <h1 className='text-xl font-semibold'>Education</h1>
           <div className='flex flex-col gap-4'>
             {educationList.map((item) => (
               <div key={item.title} className='flex flex-col gap-1'>
@@ -96,7 +96,7 @@ export default function Page() {
       )}
       {homepageSection.AcademicServicesSection && (
         <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Academic Services</h1>
+          <h1 className='text-xl font-semibold'>Academic Services</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {academicServicesList.map((item) => (
               <li key={item}>
@@ -108,7 +108,7 @@ export default function Page() {
       )}
       {homepageSection.TeachingExperienceSection && (
         <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Teaching Experience</h1>
+          <h1 className='text-xl font-semibold'>Teaching Experience</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {teachingExperienceList.map((item) => (
               <li key={item.text}>
@@ -120,7 +120,7 @@ export default function Page() {
       )}
       {homepageSection.HonorsSection && (
         <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Honors</h1>
+          <h1 className='text-xl font-semibold'>Honors</h1>
           <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
             {honorsList.map((item) => (
               <li key={item.title}>
@@ -137,7 +137,7 @@ export default function Page() {
       )}
       {homepageSection.ExperienceSection && (
         <section className='flex flex-col gap-3'>
-          <h1 className='text-2xl font-semibold'>Experience</h1>
+          <h1 className='text-xl font-semibold'>Experience</h1>
           <div className='flex flex-col gap-4'>
             {experienceList.map((item) => (
               <div key={item.title} className='flex flex-col gap-1'>

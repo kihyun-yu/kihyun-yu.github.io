@@ -28,6 +28,15 @@ export default function AboutSection() {
               >
                 [google scholar]
               </a>
+              {' '}
+              <a
+                href='https://www.linkedin.com/in/kihyun-yu-a7a336420/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='underline underline-offset-2'
+              >
+                [linkedin]
+              </a>
             </p>
           </div>
         </div>

@@ -52,6 +52,10 @@ export const personalInfo: PersonalInfo = {
       name: "Google Scholar",
       url: "https://scholar.google.com/citations?user=ya1HqdsAAAAJ&hl=en",
     },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/in/kihyun-yu-a7a336420/",
+    },
   ],
 };
 

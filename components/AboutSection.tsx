@@ -35,7 +35,7 @@ export default function AboutSection() {
                 rel='noopener noreferrer'
                 className='underline underline-offset-2'
               >
-                [linkedin]
+                [LinkedIn]
               </a>
             </p>
           </div>

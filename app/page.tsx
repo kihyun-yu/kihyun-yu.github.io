@@ -157,6 +157,12 @@ export default function Page() {
           </div>
         </section>
       )}
+      {homepageSection.NotesSection && (
+        <section id='notes' className='flex flex-col gap-3 scroll-mt-24'>
+          <h1 className='text-xl font-semibold'>Notes</h1>
+          <p className='text-sm text-neutral-700 dark:text-neutral-300'>T.B.A.</p>
+        </section>
+      )}
     </main>
   );
 }

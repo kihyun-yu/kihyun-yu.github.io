@@ -32,6 +32,7 @@ export interface HomepageSection {
   HonorsSection?: boolean;
   ExperienceSection?: boolean;
   SelectedPublicationsSection?: boolean;
+  NotesSection?: boolean;
 }
 
 export type FontStyle = "sans" | "serif" | "mono";
@@ -66,6 +67,7 @@ export const websiteInfo: WebsiteInfo = {
 
 export const navigations: NavigationItem[] = [
   { name: "Publications", route: "/publications" },
+  { name: "Notes", route: "/#notes" },
   { name: "CV", route: "/cv.pdf" },
 ];
 
@@ -77,6 +79,7 @@ export const homepageSection: HomepageSection = {
   HonorsSection: true,
   ExperienceSection: true,
   SelectedPublicationsSection: true,
+  NotesSection: true,
 };
 
 export const fontStyle: FontStyle = "sans"; // "sans" | "serif" | "mono"

@@ -32,4 +32,14 @@ export const educationList: TimelineItem[] = [
       { text: 'Two-year leave for mandatory military service (2020-2021)' },
     ],
   },
+  {
+    title: 'Sejong Science High School',
+    location: 'South Korea',
+    details: [
+      {
+        text: 'High school education',
+        date: '03/2015 - 02/2018',
+      },
+    ],
+  },
 ];

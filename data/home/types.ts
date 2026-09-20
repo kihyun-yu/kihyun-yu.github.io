@@ -10,6 +10,7 @@ export interface DetailItem {
 export interface TimelineItem {
   title: string;
   location: string;
+  duration?: string;
   details: DetailItem[];
 }
 

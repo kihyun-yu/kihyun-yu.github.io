@@ -35,10 +35,7 @@ export const educationList: TimelineItem[] = [
   {
     title: 'Sejong Science High School',
     location: 'South Korea',
-    details: [
-      {
-        text: '03/2015 - 02/2018',
-      },
-    ],
+    duration: '03/2015 - 02/2018',
+    details: [],
   },
 ];

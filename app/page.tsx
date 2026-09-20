@@ -79,13 +79,20 @@ export default function Page() {
                   <h2 className='text-base font-normal'>{item.title}</h2>
                   <span className='text-sm text-neutral-500'>{item.location}</span>
                 </div>
-                <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
-                  {item.details.map((detail) => (
-                    <li key={`${detail.text}-${detail.date || ''}`}>
-                      <DetailRow detail={detail} />
-                    </li>
-                  ))}
-                </ul>
+                {item.duration && (
+                  <p className='text-left text-sm text-neutral-700 dark:text-neutral-300'>
+                    {item.duration}
+                  </p>
+                )}
+                {item.details.length > 0 && (
+                  <ul className='list-disc pl-5 text-sm text-neutral-700 dark:text-neutral-300'>
+                    {item.details.map((detail) => (
+                      <li key={`${detail.text}-${detail.date || ''}`}>
+                        <DetailRow detail={detail} />
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </div>

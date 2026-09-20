@@ -80,7 +80,7 @@ export default function Page() {
                   <span className='text-sm text-neutral-500'>{item.location}</span>
                 </div>
                 {item.duration && (
-                  <p className='text-right text-sm text-neutral-700 dark:text-neutral-300'>
+                  <p className='text-right text-sm text-neutral-500'>
                     {item.duration}
                   </p>
                 )}

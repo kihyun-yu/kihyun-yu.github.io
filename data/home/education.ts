@@ -37,8 +37,7 @@ export const educationList: TimelineItem[] = [
     location: 'South Korea',
     details: [
       {
-        text: 'High school education',
-        date: '03/2015 - 02/2018',
+        text: '03/2015 - 02/2018',
       },
     ],
   },

@@ -2,17 +2,19 @@ import bibtexParse from 'bibtex-parse-js';
 import { personalInfo } from '@/data/website.config';
 import { CustomMDX } from '@/components/mdx';
 
-function authorProcess(authorsStr: string, personalInfoName: string): string {
+function authorProcess(authorsStr: string, personalInfoName: string, equalContribution?: string): string {
   const authors = authorsStr.split('and');
+  const equalContributors = equalContribution?.split(',').map((position) => Number(position.trim())) || [];
 
-  const boldedAuthors = authors.map((author) => {
+  const boldedAuthors = authors.map((author, index) => {
     author = author.trim().split(', ').reverse().join(' ').trim();
+    const marker = equalContributors.includes(index + 1) ? '<sup>*</sup>' : '';
 
     if (author === personalInfoName) {
-      return `**${personalInfoName}**`;
+      return `**${personalInfoName}**${marker}`;
     }
 
-    return author;
+    return `${author}${marker}`;
   });
 
   return boldedAuthors.join(', ');
@@ -28,6 +30,7 @@ interface BibtexEntry {
     booktitle?: string;
     year?: string;
     award?: string;
+    equalcontribution?: string;
   };
 }
 
@@ -50,7 +53,8 @@ export default function Publications({ bibtex }: PublicationsProps) {
       {parsed.map((item) => {
         const processedAuthors = authorProcess(
           item.entryTags.author || '',
-          personalInfo.name
+          personalInfo.name,
+          item.entryTags.equalcontribution
         );
         return (
           <li key={item.entryTags.title} className=' list-decimal'>
@@ -71,6 +75,9 @@ export default function Publications({ bibtex }: PublicationsProps) {
 
             <div className=' font-light text-neutral-600 dark:text-neutral-300'>
               {<CustomMDX source={processedAuthors} />}
+              {item.entryTags.equalcontribution && (
+                <p className='text-sm'>* Equal contribution</p>
+              )}
 
               <span className=' mr-2 italic font-normal'>
                 {item.entryTags.journal?.replace(/{|}/g, '') ||

@@ -8,7 +8,7 @@ function authorProcess(authorsStr: string, personalInfoName: string, equalContri
 
   const boldedAuthors = authors.map((author, index) => {
     author = author.trim().split(', ').reverse().join(' ').trim();
-    const marker = equalContributors.includes(index + 1) ? '<sup>*</sup>' : '';
+    const marker = equalContributors.includes(index + 1) ? '<sup>\\*</sup>' : '';
 
     if (author === personalInfoName) {
       return `**${personalInfoName}**${marker}`;

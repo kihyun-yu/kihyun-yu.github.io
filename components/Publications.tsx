@@ -49,46 +49,50 @@ export default function Publications({ bibtex }: PublicationsProps) {
   const parsed = bibtexParse.toJSON(bibtex) as ParsedBibtex[];
 
   return (
-    <ol className='flex flex-col gap-4'>
-      {parsed.map((item) => {
-        const processedAuthors = authorProcess(
-          item.entryTags.author || '',
-          personalInfo.name,
-          item.entryTags.equalcontribution
-        );
-        return (
-          <li key={item.entryTags.title} className=' list-decimal'>
-            <h2 className='text-base font-normal dark:text-neutral-50'>
-              {item.entryTags.url ? (
-                <a
-                  href={item.entryTags.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='underline'
-                >
-                  {item.entryTags.title?.replace(/{|}/g, '')}
-                </a>
-              ) : (
-                item.entryTags.title?.replace(/{|}/g, '')
-              )}
-            </h2>
+    <div className='flex flex-col gap-3'>
+      {parsed.some((item) => item.entryTags.equalcontribution) && (
+        <p className='text-sm font-light text-neutral-600 dark:text-neutral-300'>
+          * Equal contribution
+        </p>
+      )}
+      <ol className='flex flex-col gap-4'>
+        {parsed.map((item) => {
+          const processedAuthors = authorProcess(
+            item.entryTags.author || '',
+            personalInfo.name,
+            item.entryTags.equalcontribution
+          );
+          return (
+            <li key={item.entryTags.title} className=' list-decimal'>
+              <h2 className='text-base font-normal dark:text-neutral-50'>
+                {item.entryTags.url ? (
+                  <a
+                    href={item.entryTags.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='underline'
+                  >
+                    {item.entryTags.title?.replace(/{|}/g, '')}
+                  </a>
+                ) : (
+                  item.entryTags.title?.replace(/{|}/g, '')
+                )}
+              </h2>
 
-            <div className=' font-light text-neutral-600 dark:text-neutral-300'>
-              {<CustomMDX source={processedAuthors} />}
-              {item.entryTags.equalcontribution && (
-                <p className='text-sm'>* Equal contribution</p>
-              )}
+              <div className=' font-light text-neutral-600 dark:text-neutral-300'>
+                {<CustomMDX source={processedAuthors} />}
 
-              <span className=' mr-2 italic font-normal'>
-                {item.entryTags.journal?.replace(/{|}/g, '') ||
-                  item.entryTags.booktitle?.replace(/{|}/g, '')}
-              </span>
-              <span className='mr-2'>{item.entryTags.year}</span>
-              <span className='font-bold h-5'>{item.entryTags.award}</span>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
+                <span className=' mr-2 italic font-normal'>
+                  {item.entryTags.journal?.replace(/{|}/g, '') ||
+                    item.entryTags.booktitle?.replace(/{|}/g, '')}
+                </span>
+                <span className='mr-2'>{item.entryTags.year}</span>
+                <span className='font-bold h-5'>{item.entryTags.award}</span>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 }
